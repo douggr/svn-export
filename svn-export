@@ -54,7 +54,6 @@ case $1 in
 
   ''|*[!0-9]*)
     bail "fatal: The REV argument must be an integer"
-    exit 1
     ;;
 esac
 
@@ -64,11 +63,11 @@ REV="$1"
 
 LIST=$(svn log -v -r ${REV} ${REPOSITORY} | grep trunk | grep -v docs | awk '{print $2}' | sed  "s/\/trunk\///g")
 
-warn "exporting into ${DEST}"
+output "${BOLD}exporting to:${RESET} ${GREEN}${DEST}${RESET}\n"
 
 for FILE in $LIST; do
   mkdir -p $DEST/$(dirname $FILE)
-  output "${YELLOW}copying${RESET} $(basename ${FILE}) => $DEST/$(dirname $FILE)"
+  output " ⇒ $DEST/$(dirname $FILE)/$(basename ${FILE})\n"
 
   cp $FILE $DEST/$(dirname $FILE)/
 done
