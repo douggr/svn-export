@@ -26,4 +26,4 @@ exporting to: /srv/projects/svn-test/export/113
 ```
 
 ### License
-MIT
+None. Use it as you wish :sparkles:
